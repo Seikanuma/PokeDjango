@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<section class="grid grid-cols-4 gap-8 p-10 my-16 w-screen h-full content-pokedex">
+    {% for value in values %}
+        {% if forloop.counter0 <= 150 %}
+            <div class="col-span-2 rounded-2xl" id="title">
+                <div class="flex flex-col justify-center items-center p-10 h-full card-pokemon">
+                    <h2 class="text-5xl font-bold text-center text-yellow-500 title">Pokedex</h2>
+                </div>
+            </div>
+        {% endif %}
+        <div class="bg-gray-50 rounded-2xl shadow-2xl card hover:shadow-xl relative">
+            <a class="flex flex-col justify-center items-center p-20 pb-0 card-pokemon" href="{{ value.id }}">
+                <h2 class="text-3xl font-bold text-center">{{ value.name }}</h2>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ value.id }}.png"
+                     alt="{{ value.name }}" class="p-10">
+                <h2 class="font-bold text-center ">#{{ value.id }}</h2>
+            </a>
+            <button class='team-add absolute bottom-0 right-0 px-10 pt-10 pb-6 tooltip'
+                    onclick='addTeam("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ value.id }}.png","{{ value.name }}","{{ value.id }}" )'>
+                <img src="../static/pokedex/Ressources/add-poke.svg" alt="Add" class="w-14 h-14">
+                <span class="tooltiptext">Ajouter à l'équipe !</span>
+            </button>
+        </div>
+    {% endfor %}
+</section>
+
+</body>
+</html>
