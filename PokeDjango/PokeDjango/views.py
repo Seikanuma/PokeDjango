@@ -30,4 +30,4 @@ async def pokemon(request, number):
 			weakness.add(w)
 	weakness = list(weakness)[:6]
 
-	return render(request, 'pokemon.html', {"pokemon": data, "number": number, "weakness": weakness})
+	return render(request, {"pokemon": data, "number": number, "weakness": weakness})

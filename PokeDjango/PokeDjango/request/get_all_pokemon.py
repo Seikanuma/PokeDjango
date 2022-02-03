@@ -8,7 +8,7 @@ url = "https://pokeapi.co/api/v2/pokemon"
 
 
 async def get_all_pokemon():
-    allpoke = get_names_pokemons()
+    allpokes = get_names_pokemons()
 
     datapkmn = []
     async with aiohttp.ClientSession() as session:
@@ -16,7 +16,7 @@ async def get_all_pokemon():
             test = await r.json()
             for poke in test['results']:
                 pokemon = {
-                    "name": allpoke[int(re.search(r'/([0-9]+)/$', poke['url']).group(1)) - 1].name_fr,
+                    "name": allpokes[int(re.search(r'/([0-9]+)/$', poke['url']).group(1)) - 1],
                     "id": re.search(r'/([0-9]+)/$', poke['url']).group(1),
                 }
                 datapkmn.append(pokemon)
